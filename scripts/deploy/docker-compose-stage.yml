@@ -1,0 +1,14 @@
+services:
+  app:
+    image: ${IMAGE_PATH}
+    container_name: CoreBaseGo
+    restart: always
+    ports:
+      - "8800:8080"
+    networks:
+      - app-network
+    environment:
+      - APP_ENV=${CI_COMMIT_BRANCH}
+networks:
+  app-network:
+    external: true
