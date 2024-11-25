@@ -27,9 +27,9 @@
 │   │       └── base.go  # Base configuration setup (not yet implemented)
 │   ├── interfaces/      # Adapters for APIs, CLI, and external systems
 │   │   ├── rest/        # REST API endpoints
-│   │   │   ├── importer/ # Importer-specific HTTP routes
-│   │   │   │   ├── handlers/  # Handlers for importer endpoints
-│   │   │   │   └── routes.go  # Importer-specific HTTP route definitions (not yet implemented)
+│   │   │   ├── sampleFeature/ # Importer-specific HTTP routes
+│   │   │   │   ├── controller/  # Handlers for importer endpoints
+│   │   │   │   └── sampleFeatureRoutes.go  # Importer-specific HTTP route definitions (not yet implemented)
 │   │   ├── grpc/        # gRPC endpoints (not yet implemented)
 │   │   └── cli/         # CLI tools (if required, not yet implemented)
 │   └── utils/           # Utilities and helper functions (not yet implemented)
@@ -41,5 +41,33 @@
 ├── go.mod               # Go module definition
 └── go.sum               # Go module checksum
                          # Go module checksum
+
+```
+
+
+```
+request flow
+Routes (sampleFeatureRoute.Routes)
+├── Endpoint: GET /api/v1/test
+│   ├── sampleFeatureController.List
+│   │   ├── sampleFeatureApplication.ListSampleFeature
+│   │   │   ├── persistence.GetInstance (DB Connection)
+│   │   │   └── sampleFeatureRepo.GetSampleFeature (Fetch Data)
+│   │   │       └── Gorm: db.Find (Retrieve Records from Database)
+│   │   └── rest.JSONOutput (Return JSON Response)
+│   └── Response: List of SampleFeature records or error
+│
+├── Endpoint: POST /api/v1/test
+│   ├── sampleFeatureController.Store
+│   │   ├── c.ShouldBindJSON (Parse Input from Request Body)
+│   │   ├── sampleFeatureApplication.CreateSampleFeature
+│   │   │   ├── service.ValidateSampleFeatureInput (Validate Name)
+│   │   │   ├── service.CreateSampleFeature (Create SampleFeature Entity)
+│   │   │   ├── persistence.GetInstance (DB Connection)
+│   │   │   └── sampleFeatureRepo.StoreSampleFeature (Save Data)
+│   │   │       └── Gorm: db.Create (Insert Record into Database)
+│   │   └── rest.JSONOutput (Return JSON Response)
+│   └── Response: Created SampleFeature or error
+
 
 ```

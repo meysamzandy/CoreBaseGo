@@ -1,7 +1,7 @@
 package rest
 
 import (
-	"CoreBaseGo/internal/interfaces/rest/Messages"
+	"CoreBaseGo/internal/interfaces/rest/messages"
 	"github.com/gin-gonic/gin"
 )
 

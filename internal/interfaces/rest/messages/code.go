@@ -29,6 +29,7 @@ const (
 	Unauthorized        = 14022
 	DuplicatePermission = 14023
 	ExistNationalId     = 14024
+	BadRequest          = 14025
 
 	SuccessAuth         = 12000
 	UserExists          = 12001

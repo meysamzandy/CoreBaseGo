@@ -2,7 +2,7 @@ package middlewares
 
 import (
 	"CoreBaseGo/internal/interfaces/rest"
-	messages "CoreBaseGo/internal/interfaces/rest/Messages"
+	messages "CoreBaseGo/internal/interfaces/rest/messages"
 	"CoreBaseGo/internal/utils"
 	"fmt"
 	"github.com/gin-gonic/gin"

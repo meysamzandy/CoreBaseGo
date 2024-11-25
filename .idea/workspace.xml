@@ -4,16 +4,31 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b52ede1-7491-4b8b-b66c-2dd1b3e95a9c" name="Changes" comment="" />
+    <list default="true" id="3b52ede1-7491-4b8b-b66c-2dd1b3e95a9c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/internal/application/test/test_handler.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/domain/test/entity/test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/domain/test/service/test_service.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/infrastructure/http/routes.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/interfaces/rest/test/handlers/test_handler.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/domain/importer/entity/importer.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/infrastructure/http/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/infrastructure/http/server.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/interfaces/rest/importer/handlers/importerRequest.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/interfaces/rest/importer/routes.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/interfaces/rest/test/routes.go" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="GOROOT" url="file:///usr/lib/go-1.22" />
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 0
-}]]></component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectId" id="2pHuQM695gMod3l68o7sSJSYKh2" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -25,6 +40,7 @@
     "RunOnceActivity.go.formatter.settings.were.checked": "true",
     "RunOnceActivity.go.migrated.go.modules.settings": "true",
     "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
+    "git-widget-placeholder": "master",
     "go.import.settings.migrated": "true",
     "go.sdk.automatically.set": "true",
     "last_opened_file_path": "/home/meysam/workstation/newCode/CoreBaseGo",

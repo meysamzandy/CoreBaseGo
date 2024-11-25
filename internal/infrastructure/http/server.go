@@ -1,7 +1,6 @@
 package http
 
 import (
-	routes "CoreBaseGo/internal/interfaces/rest/importer"
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"
@@ -19,7 +18,7 @@ func StartServer() {
 			return
 		}
 	}
-	routes.V1(router)
+	RegisterRoutes(router)
 	fmt.Println("Starting server on port: " + viper.GetString("PORT"))
 	log.Fatal(router.Run(":" + viper.GetString("PORT")))
 }

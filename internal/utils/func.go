@@ -2,7 +2,7 @@ package utils
 
 import (
 	"CoreBaseGo/internal/interfaces/rest"
-	messages "CoreBaseGo/internal/interfaces/rest/Messages"
+	messages "CoreBaseGo/internal/interfaces/rest/messages"
 	"context"
 	"errors"
 	"fmt"
@@ -158,4 +158,8 @@ func ClaimsJwtData(c *gin.Context) (*Claims, bool) {
 	}
 
 	return claims, false
+}
+
+func Out(status int, errorCode int, messagesText string) (int, int, string) {
+	return status, errorCode, messagesText
 }
