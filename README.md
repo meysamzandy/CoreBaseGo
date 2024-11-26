@@ -18,15 +18,23 @@ The project follows a modular and layered architecture:
 
 ```
 1- cmd/: Entry points for the application (e.g., API server, workers).
+
 2- configs/: Configuration templates.
+
 3- internal/: Application code (business logic, use cases, and adapters).
+
     - domain/: Core business logic and rules.
+    
     - application/: Application workflows and orchestrations.
+    
     - infrastructure/: Technical implementations like database and HTTP server.
+    
     - interfaces/: Adapters for APIs and external interactions.
 
 4- pkg/: Shared reusable packages (if needed).
+
 5- scripts/: Build and deployment scripts.
+
 6- test/: Unit and integration tests.
 ```
 
@@ -153,14 +161,11 @@ Follow these steps to set up and run the **CoreBaseGo** project:
    ```bash
    cp configs/.env.example configs/.env
    make generate-key
-   
 
 4. **Run Database Migrations**  
    Ensure your database schema is up-to-date:
    ```bash
    make migrate
-
-
 
 5. **Run the API Server**  
    Start the application by running the API server:
