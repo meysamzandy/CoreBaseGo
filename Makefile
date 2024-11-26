@@ -56,6 +56,15 @@ clean:
 	@echo "Cleaning up..."
 	rm -f $(BINARY_NAME)
 
+# Run Workers
+worker:
+	@echo "Running $(BINARY_NAME)..."
+	$(RUN) cmd/worker/main.go
+
+cli-run:
+	@echo "Running CLI command..."
+	@go run internal/interfaces/cli/main.go greet meysam
+
 # Build and run the application
 build-run: build
 	@echo "Running $(BINARY_NAME)..."
@@ -66,6 +75,8 @@ release: build
 	@echo "Creating release for version $(VERSION)..."
 	@mkdir -p $(BUILD_DIR)
 	@cp $(BINARY_NAME) $(BUILD_DIR)/$(BINARY_NAME)-$(VERSION)
+
+
 
 # Help message
 help:
