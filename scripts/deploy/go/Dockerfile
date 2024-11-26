@@ -21,7 +21,7 @@ RUN go build -o CoreBaseGo ./cmd/main.go
 
 
 # Stage 2: Slim runtime environment (same as before)
-FROM registry.tadvin.tech/tadvin/images:golang-alpine
+FROM golang-alpine
 
 # Copy only the binary
 COPY --from=builder /app/CoreBaseGo /app/CoreBaseGo
