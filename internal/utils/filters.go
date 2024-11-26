@@ -2,13 +2,21 @@ package utils
 
 import (
 	"github.com/gin-gonic/gin"
-	"strconv"
+	"github.com/morkid/paginate"
+	"gorm.io/gorm"
 )
 
-func Pagination(c *gin.Context) (int, int) {
-	// Pagination
-	page, _ := strconv.Atoi(c.DefaultQuery("page", "1"))
-	limit, _ := strconv.Atoi(c.DefaultQuery("limit", "10"))
-	offset := (page - 1) * limit
-	return limit, offset
+func ListQueryWithPagination(c *gin.Context, db *gorm.DB, model interface{}) paginate.Page {
+	// Create a base query using the passed model
+	query := db.Model(model)
+
+	// Initialize the pagination library
+	pg := paginate.New()
+
+	// Use the HTTP request from the Gin context
+	req := c.Request
+
+	// Execute pagination
+	result := pg.With(query).Request(req).Response(model)
+	return result
 }

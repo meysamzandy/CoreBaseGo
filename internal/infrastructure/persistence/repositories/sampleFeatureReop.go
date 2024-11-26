@@ -2,6 +2,7 @@ package sampleFeatureRepo
 
 import (
 	sampleFeatureEntity "CoreBaseGo/internal/domain/sampleFeature/entity"
+	"CoreBaseGo/internal/utils"
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/morkid/paginate"
@@ -17,17 +18,7 @@ func StoreSampleFeature(db *gorm.DB, sampleFeature *sampleFeatureEntity.SampleFe
 }
 
 func GetSampleFeature(c *gin.Context, db *gorm.DB) paginate.Page {
-	// Create a base query
-	query := db.Model(&sampleFeatureEntity.SampleFeature{})
+	var sampleFeatures []sampleFeatureEntity.SampleFeature
+	return utils.ListQueryWithPagination(c, db, &sampleFeatures)
 
-	// Initialize the pagination library
-	pg := paginate.New()
-
-	// Use the HTTP request from the Gin context
-	req := c.Request
-
-	// Execute pagination
-	result := pg.With(query).Request(req).Response(&[]sampleFeatureEntity.SampleFeature{})
-
-	return result
 }
