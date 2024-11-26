@@ -1,3 +1,39 @@
+# CoreBaseGo
+
+**CoreBaseGo** is a boilerplate Go project designed with **clean architecture (hexagonal architecture)** principles. The goal is to provide a scalable and maintainable structure for Go applications with clear separations of concerns, making it easy to extend and adapt to changing requirements.
+
+---
+
+## Features
+- **Clean Architecture**: Separation of concerns into domain, application, infrastructure, and interface layers.
+- **Database Integration**: Support for database operations through the `gorm` ORM.
+- **RESTful API**: Predefined routes and controllers for APIs.
+- **Modular Design**: Organized into feature-specific modules for scalability.
+- **Extensibility**: Designed to easily integrate new external services, routes, and features.
+
+---
+
+## Folder Structure Overview
+The project follows a modular and layered architecture:
+
+```
+1- cmd/: Entry points for the application (e.g., API server, workers).
+2- configs/: Configuration templates.
+3- internal/: Application code (business logic, use cases, and adapters).
+    - domain/: Core business logic and rules.
+    - application/: Application workflows and orchestrations.
+    - infrastructure/: Technical implementations like database and HTTP server.
+    - interfaces/: Adapters for APIs and external interactions.
+
+4- pkg/: Shared reusable packages (if needed).
+5- scripts/: Build and deployment scripts.
+6- test/: Unit and integration tests.
+```
+
+---
+
+## Folder Structure
+The project follows a modular and layered architecture:
 ```
 .
 ├── cmd/                # Application entry points (main files)
@@ -57,9 +93,9 @@
    
 
 ```
-
+## WorkFellow For Sample Feature
+what happened in this system for example:
 ```
-request flow
 Routes (sampleFeatureRoute.Routes)
 ├── Endpoint: GET /api/v1/test
 │   ├── sampleFeatureController.List
@@ -84,3 +120,67 @@ Routes (sampleFeatureRoute.Routes)
 
 
 ```
+
+
+---
+
+## Getting Started
+
+Follow these steps to set up and run the **CoreBaseGo** project:
+
+### Prerequisites
+- **Go 1.20+** installed on your system.
+- A configured database (compatible with `gorm`, e.g., MySQL, PostgreSQL).
+- [Git](https://git-scm.com/) installed for cloning the repository.
+
+---
+
+### Steps
+
+1. **Clone the Repository**  
+   Clone the project repository from GitHub:
+   ```bash
+   git clone https://github.com/username/CoreBaseGo.git
+   cd CoreBaseGo
+
+2. **Install Dependencies**  
+   Install all required dependencies for the project:
+   ```bash
+   go mod tidy
+
+3. **Configure the Application**
+   Copy the example configuration file to create your own configuration file:
+   ```bash
+   cp configs/.env.example configs/.env
+   make generate-key
+   
+
+4. **Run Database Migrations**  
+   Ensure your database schema is up-to-date:
+   ```bash
+   make migrate
+
+
+
+5. **Run the API Server**  
+   Start the application by running the API server:
+   ```bash
+   make run
+
+---
+
+# Help message
+    help:
+    @echo "Makefile commands:"
+    @echo "  make build        - Build the binary"
+    @echo "  make run          - Run the application"
+    @echo "  make generate-key - Create APP_KEY"
+    @echo "  make migrate      - Init database migrations"
+    @echo "  make test         - Run tests"
+    @echo "  make fmt          - Format code"
+    @echo "  make vet          - Vet code"
+    @echo "  make lint         - Lint code"
+    @echo "  make clean        - Clean build artifacts"
+    @echo "  make build-run    - Build and run the application"
+    @echo "  make release      - Create a release"
+    @echo "  make help         - Show this help message"
