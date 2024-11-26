@@ -7,6 +7,8 @@ import (
 	sampleFeatureRepo "CoreBaseGo/internal/infrastructure/persistence/repositories"
 	"CoreBaseGo/internal/interfaces/rest/messages"
 	"CoreBaseGo/internal/utils"
+	"github.com/gin-gonic/gin"
+	"github.com/morkid/paginate"
 	"log"
 	"net/http"
 )
@@ -35,13 +37,12 @@ func CreateSampleFeature(name string) (*sampleFeatureEntity.SampleFeature, error
 }
 
 // ListSampleFeature request flow should be here
-func ListSampleFeature() ([]sampleFeatureEntity.SampleFeature, error) {
+func ListSampleFeature(c *gin.Context) (paginate.Page, error) {
 	db, err := persistence.GetInstance()
 	if err != nil {
 		log.Printf("Database connection error: %v", err)
 		utils.Out(http.StatusInternalServerError, messages.InternalServerError, "Internal server error")
-		return nil, err
 	}
 
-	return sampleFeatureRepo.GetSampleFeature(db)
+	return sampleFeatureRepo.GetSampleFeature(c, db), nil
 }

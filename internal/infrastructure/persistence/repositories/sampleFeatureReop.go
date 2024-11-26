@@ -3,6 +3,8 @@ package sampleFeatureRepo
 import (
 	sampleFeatureEntity "CoreBaseGo/internal/domain/sampleFeature/entity"
 	"fmt"
+	"github.com/gin-gonic/gin"
+	"github.com/morkid/paginate"
 	"gorm.io/gorm"
 )
 
@@ -14,11 +16,18 @@ func StoreSampleFeature(db *gorm.DB, sampleFeature *sampleFeatureEntity.SampleFe
 	return sampleFeature, nil
 }
 
-// GetSampleFeature retrieves all plans
-func GetSampleFeature(db *gorm.DB) ([]sampleFeatureEntity.SampleFeature, error) {
-	var sampleFeature []sampleFeatureEntity.SampleFeature
-	if err := db.Find(&sampleFeature).Error; err != nil {
-		return nil, fmt.Errorf("failed to fetch plans: %w", err)
-	}
-	return sampleFeature, nil
+func GetSampleFeature(c *gin.Context, db *gorm.DB) paginate.Page {
+	// Create a base query
+	query := db.Model(&sampleFeatureEntity.SampleFeature{})
+
+	// Initialize the pagination library
+	pg := paginate.New()
+
+	// Use the HTTP request from the Gin context
+	req := c.Request
+
+	// Execute pagination
+	result := pg.With(query).Request(req).Response(&[]sampleFeatureEntity.SampleFeature{})
+
+	return result
 }

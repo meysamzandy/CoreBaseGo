@@ -10,7 +10,7 @@ import (
 
 // List retrieves all plans
 func List(c *gin.Context) {
-	list, err := sampleFeatureApplication.ListSampleFeature()
+	list, err := sampleFeatureApplication.ListSampleFeature(c)
 	if err != nil {
 		rest.JSONOutput(c, http.StatusInternalServerError, nil, messages.InternalServerError, err.Error())
 		return
