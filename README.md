@@ -101,7 +101,7 @@ The project follows a modular and layered architecture:
    
 
 ```
-## WorkFellow For Sample Feature
+## Workflow For Sample Feature
 what happened in this system for example:
 ```
 Routes (sampleFeatureRoute.Routes)
